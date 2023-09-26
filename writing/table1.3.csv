@@ -1,0 +1,33 @@
+mod_category,mod_variable,k_constructed,g_constructed,k_studied,g_studied
+,Overall,75,0.72,67,0.43
+Comparison condition,Discussion/lecture,32,1.05,5,1.09
+Comparison condition,Studied or constructed lists,0,-,13,0.43
+Comparison condition,Studied or constructed outlines,6,0.4,2,0.72
+Comparison condition,Studied text,5,0.33,39,0.29
+Comparison condition,Constructed text,10,0.48,3,0.1
+Comparison condition,Other,22,0.47,5,0.98
+Academic discipline,STEM,64,0.73,54,0.44
+Academic discipline,non-STEM,11,0.62,12,0.41
+Academic discipline,Not reported,0,-,1,0.05
+CM mode,Interactive,8,0.71,16,0.54
+CM mode,Static,66,0.72,39,0.4
+CM mode,Animated,0,-,7,0.47
+CM mode,Mixed,1,0.75,5,0.27
+Intervention duration,<1 week,14,0.4,33,0.34
+Intervention duration,1-4 weeks,23,0.94,30,0.48
+Intervention duration,>4 weeks,37,0.72,4,0.7
+Intervention duration,Unknown,1,0.06,0,-
+Country,Africa,7,1.44,0,-
+Country,Asia,9,0.78,5,1.04
+Country,Europe,9,0.82,3,0.46
+Country,Middle East,13,0.75,2,0.96
+Country,USA or Canada,33,0.49,51,0.25
+Country,Other/not reported,4,0.62,6,1.29
+School level,Intermediate,22,0.68,7,0.82
+School level,Secondary,25,0.74,4,1.24
+School level,Postsecondary and beyond,28,0.73,56,0.32
+Student interaction,In groups,14,0.91,10,0.48
+Student interaction,Individual,32,0.55,55,0.41
+Student interaction,Mixed,22,0.91,0,-
+Student interaction,Other,2,0.95,1,0.75
+Student interaction,Unknown,5,0.29,1,0.47
