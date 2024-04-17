@@ -347,6 +347,30 @@ As with all systematic reviews, this study started with a systematic literature 
 
 
 
+```{r}
+PRISMA2020_dat <- PRISMA2020::PRISMA_data(read_csv(here::here("data", "lit_search_results.csv")))
+
+PRISMA_diagram <- PRISMA2020::PRISMA_flowdiagram(
+  PRISMA2020_dat,
+  interactive = FALSE,
+  previous = FALSE, # were previous studies sought?
+  other = TRUE, # were other studies sought?
+  detail_databases = TRUE, # list specific databases?
+  detail_registers = FALSE, # list specific registers?
+  fontsize = 15,
+  font = "Helvetica",
+  title_colour = "Goldenrod1",
+  greybox_colour = "Gainsboro",
+  main_colour = "Black",
+  arrow_colour = "Black",
+  arrow_head = "normal",
+  arrow_tail = "none",
+  side_boxes = TRUE # inlcude box labels on side, e.g., "screen", "coding")
+)
+
+PRISMA_diagram
+# PRISMA_save(PRISMA_diagram, filename ="diagram_MASAL.png", overwrite = TRUE)
+```
 
 
 # References
