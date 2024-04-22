@@ -4,4 +4,12 @@
 .httr-oauth
 .DS_Store
 .quarto
+
+README.html
+
 writing/_extensions/
+writing/defunct
+writing/defunct_paper1
+writing/paper1_files
+scratchwork/
+_targets/

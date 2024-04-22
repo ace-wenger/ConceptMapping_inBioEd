@@ -1,0 +1,3 @@
+.rotate-img img {
+  transform: rotate (270deg);
+}

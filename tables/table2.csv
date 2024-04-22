@@ -1,0 +1,40 @@
+mod_category,moderator,levels,k,kp,j,jp
+Publication Type,Journal,,28,64%,59,64%
+Publication Type,Dissertation/Theses,,16,36%,33,36%
+Decade Published,1980s,,7,16%,12,13%
+Decade Published,1990s,,10,23%,22,24%
+Decade Published,2000s,,10,23%,18,20%
+Decade Published,2010s,,15,34%,37,40%
+Decade Published,2020 and on,,2,5%,3,3%
+Country,US,,20,45%,49,53%
+Country,non-US,non-US total,24,55%,43,47%
+Country,non-US,Nigeria,7,16%,17,18%
+Country,non-US,Turkey,5,11%,6,7%
+Country,non-US,Canada,2,5%,4,4%
+Country,non-US,India,1,2%,3,3%
+Country,non-US,Colombia,1,2%,1,1%
+Country,non-US,Germany,1,2%,1,1%
+Country,non-US,Ghana,1,2%,1,1%
+Country,non-US,Iran,1,2%,1,1%
+Country,non-US,Jamaica,1,2%,1,1%
+Country,non-US,Jordan,1,2%,1,1%
+Country,non-US,Netherlands,1,2%,3,3%
+Country,non-US,Serbia,1,2%,1,1%
+Country,non-US,Taiwan,1,2%,2,2%
+Comparison Condition,BAU,BAU total,42,95%,74,80%
+Comparison Condition,BAU,"Conventional Teaching (control, traditional, regular, lecture)",34,77%,62,67%
+Comparison Condition,BAU,"Summary Assignment (written, outline)",5,11%,5,5%
+Comparison Condition,BAU,"Studying (individual, regular, outline)",3,7%,5,5%
+Comparison Condition,BAU,Reading (underlining),1,2%,1,1%
+Comparison Condition,BAU,Key Terms Assignment,1,2%,1,1%
+Comparison Condition,Reform,Reform total,8,18%,18,20%
+Comparison Condition,Reform,"Increasing metacognition  (self-explanation, cues)",2,5%,2,2%
+Comparison Condition,Reform,Retrieval practice,2,5%,6,7%
+Comparison Condition,Reform,Student-centered Teaching (written format),1,2%,2,2%
+Comparison Condition,Reform,Cooperative Learning,1,2%,2,2%
+Comparison Condition,Reform,5E Teaching/Learning Cycle,1,2%,2,2%
+Comparison Condition,Reform,Reading (mobilization),1,2%,1,1%
+Comparison Condition,Reform,Computer simulation,1,2%,2,2%
+Setting,Intact,,35,80%,68,74%
+Setting,Partial,,7,16%,21,23%
+Setting,Research,,2,5%,3,3%
