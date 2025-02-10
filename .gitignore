@@ -1,15 +1,27 @@
+# standard gitignores
 .Rproj.user
 .Rhistory
 .Rdata
 .httr-oauth
 .DS_Store
 .quarto
+_targets/
+scratchwork/
 
+# rendered docs
 README.html
+writing/*.docx
 
+# qmd support files
 writing/_extensions/
+
+# processed data and 'flextable' objects
+*.csv
+tables/flt*
+
+# unused figures and files
+figures/r2boot/
 writing/defunct
 writing/defunct_paper1
 writing/paper1_files
-scratchwork/
-_targets/
+

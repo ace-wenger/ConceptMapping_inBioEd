@@ -31,16 +31,17 @@ author:
         postal-code: 49008-5444
 author-note: 
   blank-lines-above-author-note: 1
-  disclosures: 
-    related-report: "This is draft manuscript. It will be submitted to the journal, Review of Educational Research. It is formatted in generic APA style. I appreciate any and all feedback you have."
-abstract: "Concept mapping (CM) instructional interventions have substantial positive effects, according to several meta-analyses. 
-These meta-analyses found significant heterogeneity in effect sizes (ES), but did not apply best methods for investigating it. 
-The current study assessed and investigated the heterogeneity of 92 ES from 44 experimental or quasi-experimental studies of CM in biology education using multilevel, meta-regression. 
-Ten variables were collected and categorized as an extrinsic, methodological, sample, or intervention characteristic. 
-Overall, ES were very heterogeneous (95% PI [-1.04, 2.03], I2 = 90.3%) with a mean ES of 0.50 (95% CI [0.26, 0.73]). 
-Extrinsic and methodological characteristics explained about 35% of within- and between-study variance.
-Conclusion: Some predictions of CM proponents are supported (e.g., importance of integrated classrooms), while others are not (e.g., CM study by students is more effective than CM construction).
-Research on CM efficacy in biology education is largely inconclusive; future research ought to focus on replication and generalization of previous findings. (149 words) [Note: journal limit is 150 words]"
+abstract: "Concept mapping (CM) is widely used in biology education to facilitate meaningful learning, yet its effectiveness varies significantly across studies. 
+This systematic review and meta-analysis examined the cognitive effects of CM interventions in biology education, synthesizing 92 effect sizes from 44 experimental and quasi-experimental studies. 
+Using a multilevel meta-regression approach, we investigated the sources of heterogeneity in CM effectiveness by analyzing extrinsic, methodological, sample, and intervention characteristics. 
+The overall mean effect size was 0.50 (95% CI [0.26, 0.73]), but substantial heterogeneity was observed (I² = 90.3%, 95% prediction interval [-1.04, 2.03]). 
+Comparison condition was the strongest predictor of effect size, with CM demonstrating greater efficacy relative to traditional lecture-based instruction but showing no significant advantage over other evidence-based teaching methods. 
+Surprisingly, interventions where students studied expert-constructed maps had larger effects than those requiring students to construct their own maps. 
+Other moderating factors, including student training and interaction, showed inconsistent associations with learning outcomes. 
+These findings highlight the need for future research to prioritize comparisons with established instructional approaches, employ rigorous experimental designs, and systematically investigate the mechanisms underlying CM’s effectiveness. 
+The observed variability underscores the importance of replication and generalization in CM research to refine best practices for biology education.
+(200 words) [Note: journal limit is 250 words]"
+
 keywords: [Meta-analysis, Biology education, Concept mapping, Cognitive achievement]
 format: 
   apaquarto-docx: default
@@ -66,25 +67,25 @@ library(knitr)
 conflicts_prefer(dplyr::filter, .quiet = TRUE)
 ```
 
-Concept mapping (CM) is an instructional activity invented in the 1970s by Novak and his Cornell University research team [@NCtoc2007]. 
-A concept map consists of conceptual nodes with connecting verbal links (see {apafg-example-cm}). 
-Each node-link-node connection forms a proposition. 
+Concept mapping (CM) is an instructional activity invented in the 1970s by Novak and his research team at Cornell University [@NCTheoreticalOriginsConcept2007]. 
+A concept map consists of conceptual nodes connected by labeled links, forming meaningful, node-link-node propositions (see @fig-example-cm). 
 CM has been applied in a variety of ways and for a variety of instructional purposes such as collaborative learning, group discussion, directed reading, and formative assessment. 
-With the move of classes to online settings during the COVID-19 pandemic, CM has received even more attention in science education as a tool for active learning in virtual settings [@GCConstructingOnlineConcept2021; @ChoSynchronousCollaborativeOnline2020]. 
+After the move of classes to online settings during the COVID-19 pandemic, CM received even more attention in science education as a tool for active learning in virtual settings [@GCConstructingOnlineConcept2021; @ChoSynchronousCollaborativeOnline2020]. 
 
-```{r apafg-example-cm}
-#| apa-cap: An example concept map with its key features, from @NCtoc2007
+```{r fig-example-cm}
+#| fig-cap: An example concept map with its key features, from @NCTheoreticalOriginsConcept2007
 #| out-width: 100%
 
 knitr::include_graphics(here::here("figures", "example_concept_map.png"))
 ```
 
-Over the last 40 years, classroom intervention studies with CM have proliferated and their results vary widely, often conflicting. 
-Based on the results of recent meta-analyses and reviews, it is apparent that there is unexplained variance in the observed effects of CM in instructional contexts.
+Over the last four decades, numerous classroom intervention studies with CM have produced inconsistent results.
+Some research supports CM's benefits for student learning, while others report negligible or even negative effects.
+Meta-analyses and other reviews of research have described the extent of this between-study variability in CM's impact, yet the factors which cause differing results remain unclear.
 It is an open question whether some of this variance is due to the influence of factors which affect the efficacy of CM, of which we know little [@SNAAStudyingConstructingConcept2018; @KinConceptMappingLearning2014; @PYVCMappingLearningStrategy2012], or other study-specific factors (e.g., study design, comparison condition).
 
-The present work is a systematic review and meta-analysis with the primary purpose of learning more about the factors that influence the effect size of CM interventions in empirical studies. 
-As the use of CM in education is a large, diverse, and complex topic, this project focuses on CM use in biology education. 
+The present work conducted a systematic review and meta-analysis with the primary purpose of learning more about the factors that influence the effect size of CM interventions in experimental and quasi-experimental studies.
+Given the breadth of CM applications across education, this work focuses on its use in biology instruction in order to maintain a manageable scope.
 The results are used to draw conclusions on the efficacy of CM in biology education and to provide guidance for future research. 
 
 <!-- maybe exclude this 
@@ -94,14 +95,15 @@ CM proponents in science education consistently evoke constructivist epistemolog
 
 # Concept Mapping in Context
 
-Proponents of various “concept mapping”, “mind mapping”, and “knowledge mapping” activities have promoted their innovations – each with some success – to the education profession and the general public. 
-As a result, a confusion of terms has set in which creates difficulties for research on CM [@AhlVarietiesConceptMapping2004; @KinConceptMappingLearning2014]. 
-The brief description of CM given in the introduction – as a diagram of conceptual nodes with connecting verbal links – serves as the definition of CM for this project. In contrast, mind mapping is a simple association method without a definitive structure or the use of verbal links [@AhlVarietiesConceptMapping2004]. 
+Various instructional strategies incorporating graphical representations of knowledge — such as concept mapping, mind mapping, and knowledge mapping — have gained widespread attention in education. 
+Inconsistencies in the use of these terms, and their associated definitions, has complicated research on concept mapping (Åhlberg, 2004; Kinchin, 2014).
+The brief description of CM given in the introduction – as a diagram of conceptual nodes with connecting verbal links – serves as the definition of CM for this project. 
+In contrast, mind mapping is a simple association method without a definitive structure or the use of verbal links [@AhlVarietiesConceptMapping2004]. 
 Knowledge mapping is very similar to CM except that it uses a definite set of terms for links between nodes [@ODHKnowledgeMapsScaffolds2001]. 
 
-CM was developed by researchers as a means of representing children’s science knowledge [@NCtoc2007] and has been used by researchers in other contexts and applications as an instrument or method. 
+CM was developed by researchers as a means of representing children’s science knowledge [@NCTheoreticalOriginsConcept2007] and has been used by researchers in other contexts and applications as an instrument or method. 
 For example, CM has been used to measure conceptual change [@WMConceptMapResearch1990] and as a method of planning program evaluations [@TroIntroductionConceptMapping1989] and dissertation projects [@DonSystematicReviewConcept2017].
-Early proponents of CM soon applied CM to instructional purposes as a means of promoting Ausubel’s meaningful learning construct via the process of assimilation – integration of new concepts into existing conceptual frameworks [@NCtoc2007].
+Early proponents of CM soon applied CM to instructional purposes as a means of promoting Ausubel’s meaningful learning construct via the process of assimilation – integration of new concepts into existing conceptual frameworks [@NCTheoreticalOriginsConcept2007].
 
 The instructional uses of CM are varied. 
 From the earliest years, CM was recommended as a learning and formative assessment tool [@NovApplyingLearningPsychology1981]. 
@@ -110,7 +112,7 @@ CM has been used in both a collaborative group setting and with individual learn
 Lastly, CM has been applied extensively in higher education [@KinConceptMappingLearning2014], but also in K-12 schooling [@SNAAStudyingConstructingConcept2018].
 
 While CM has been used as an instructive tool in many school subjects, its first use was in biology education. 
-The first article promoting the instructional use of CM was published in The American Biology Teacher [SVRConceptMapsTool1979].
+The first article promoting the instructional use of CM was published in The American Biology Teacher [@SVRConceptMapsTool1979].
 Some researchers believe that CM can help students summarize course content using the large vocabulary required in introductory biology courses, thus promoting meaningful rather than rote learning [@JMLinkingPhrasesConcept2019]. 
 As stated by @STConceptMappingInstructional1990, “Concept mapping … appears to be ideally suited to address biology content.” (78-79). 
 
@@ -139,13 +141,13 @@ The competing explanatory frameworks of Karpicke and Novak demonstrates that the
 <!-- The present study adopts the perspective of constructivism as this is the most prevalent theoretical framework in CM intervention research.  -->
 
 [^1]: Human constructivism is perhaps a misnomer.
-Novak does not propose a new epistemological position so much as argue for greater emphasis on the social environment and prior knowledge within the general framework of cognitive information processing.
+@NovHumanConstructivismUnification1993 does not propose a new epistemological position so much as argue for greater emphasis on the social environment and prior knowledge within the general framework of cognitive information processing.
 He employs "constructivism" more as a metaphor for cognitive processes not as a perspective on metaphysics and the nature of knowledge.
 <!-- Other CM proponents such as Ian Kinchin do adhere to epistemological constructivism (see) -->
 
 # Previous Meta-Analyses
 
-A series of systematic reviews have examined the CM literature each with a focus on a particular aspect or application of CM [e.g., @HSBSystematicReviewConcept2018, @MCConceptMappingBenefits2020, and @MMSCriticalReviewConcept2015). 
+A series of systematic reviews have examined the CM literature each with a focus on a particular aspect or application of CM [e.g., @HSBSystematicReviewConcept2018, @MCConceptMappingBenefits2020, and @MMSCriticalReviewConcept2015]. 
 A number of meta-analyses have also been conducted on the effects of CM interventions. 
 Most recently, @BFTSDevelopmentStudentsCritical2022 synthesized the metacognitive (i.e., critical thinking) and affective effects of CM interventions across 21 studies. 
 @YZZJEffectivenessConceptMapping2017 similarly synthesized metacognitive effects but limited their scope to studies in medical education.
@@ -157,12 +159,12 @@ Their analysis yielded an overall mean ES of 0.58 with an I2 of 87.5%, after adj
 They conducted moderator analyses with five categorical variables using the full set of independent effect sizes. 
 They then divided the dataset by CM type (constructed or studied) and conducted moderator analyses by the four remaining variables plus three additional categorical variables.
 The largest differences in CM effects were seen for different comparison conditions, region, and level of student interaction.
-No other statistically significant and potentially meaningful differences were seen except for duration of the intervention. The results of the moderator analyses are shown in {apatb-prior-analysis}.
+No other statistically significant and potentially meaningful differences were seen except for duration of the intervention. The results of the moderator analyses are shown in {tbl-prior-analysis}.
 
-```{r apatb-prior-analysis}
+```{r tbl-prior-analysis}
 #| apa-cap: Prior Analysis of Moderator Variables in CM Interventions
 
-read_rds(here::here("tables", "flt_CMBioEd_prior_analysis"))
+read_rds(here::here("tables", "flt_paper2_prior_analysis"))
 ```
 
 # Potential Moderators of CM Efficacy
@@ -175,7 +177,7 @@ This scheme was derived from the ideas of @LipIdentifyingPotentiallyInteresting2
 
 ### Publication Status
 Extrinsic characteristics are those characteristics of included studies which concern the researcher or research process.
-Differences in mean effect sizes by publication status (i.e. journal article or dissertation/thesis) are known and described as a type of publication bias [@CHVhrs2019].
+Differences in mean effect sizes by publication status (i.e. journal article or dissertation/thesis) are known and described as a type of publication bias [@CHVHandbookResearchSynthesis2019].
 In an empirical investigation of youth psychotherapy trials, @MWude2004 found that studies reported in dissertations have a lower mean effect size than studies reported in journal articles. 
 
 ### Publication Year
@@ -185,8 +187,8 @@ It is included for descriptive purposes and to control for unknown confounding v
 
 ### Country
 The country or region where the study was conducted is included as an extrinsic rather than sample characteristic. 
-While the country or region where a study was conducted may serve as an indicator of socio-cultural factors, it was judged that it is more likely associated with extrinsic or methodological factors than intervention or sample factors.
-Again it is very difficult to interpret meaningfully. 
+While the country or region where a study was conducted may serve as an indicator of socio-cultural factors, it was judged that it is more likely associated with extrinsic or methodological factors.
+As with publication year, this characteristic is included primarily for descriptive purposes and results will be interpreted with caution. 
 
 ## Methodological Characteristics
 
@@ -242,10 +244,10 @@ However, these characteristics are often not reported and are not operationalize
 # Rationale and Research Questions
 
 The work of @SNAAStudyingConstructingConcept2018 is excellent for its contextualization of CM within educational theories and in its discussion of theory vs. evaluation-orientated research. 
-However, it falls short in its meta-analytic methods in important ways. 
+However, it falls short in its meta-analytic methods in important ways which may be improved upon. 
 First, in calculating effect sizes (ES) for studies with multiple CM conditions, they calculated synthetic ESs which averaged the means and standard deviations of each CM condition. 
 In cases where outcome measures are reported at multiple time points, Schroeder et al. deferred to the last measurement to calculate the ES for the whole study. 
-Both ES extraction decisions avoid combining dependent ESs in the meta-analysis but at the cost of lower statistical power, a lesser ability to explain heterogeneous effects, and the potential for bias [@CHVhrs2019]. 
+Both ES extraction decisions avoid combining dependent ESs in the meta-analysis but at the cost of lower statistical power, a lesser ability to explain heterogeneous effects, and the potential for bias [@CHVHandbookResearchSynthesis2019]. 
 Synthetic ES can be avoided using multilevel and/or multivariate meta-analyses [@TPACurrentPracticesMetaregression2019; @VLMSMetaanalysisMultipleOutcomes2015].
 
 Second, Schroeder et al. do not distinguish between cognitive and affective (referred to as motivational) outcomes in their analysis. 
@@ -302,7 +304,7 @@ Electronic searches used a tested search strategy [as recommended by @MSS+PRESSP
 The search protocol used three terms in conjunction to specify key concepts as follows: CM (“concept map\*” OR “knowledge map\*”), biology (biolog\* OR “life science\*”), and education (education\* OR teach\* OR learn\*). 
 Seven databases and collections were searched: Scopus, Eric (EBSCOhost), PubMed Central, BioOne, PyschINFO (ProQuest), ProQuest Dissertations and Theses Global, ProQuest Central. 
 The search fields selected were the broadest available in each database: all text (Eric, PubMed Central); anywhere except full text (Dissertations and Abstracts Global, ProQuest Central, PsycINFO, BioOne); and titles, abstracts, and keywords (Scopus). 
-Backwards citation chasing by hand [see @CHVhrs2019] with 17 CM reviews (previously known to the first author) identified additional records. 
+Backwards citation chasing by hand [see @CHVHandbookResearchSynthesis2019] with 17 CM reviews (previously known to the first author) identified additional records. 
 The screening process took place in three stages – first using the title only, then the title and abstract, then the full text if it was in English. 
 After screening of database results, some additional records were identified in the references of included records.
 All screening was performed by the first author following four inclusion criteria for the meta-analysis:
@@ -352,7 +354,7 @@ Most research was conducted in the classroom with teachers implementing the expe
 In most records (35, 80%), intact classrooms or course sections were assigned to each condition.
 Some records (7, 16%), implemented conditions with subgroups of a classroom, often the same classroom.
 Only two records (5%) were implemented in a psychological laboratory setting.
-{apatb-descriptive1} documents the number of studies (k) and number of effect sizes (j) for each level of all extrinsic and methodological characteristics.
+{tbl-descriptive1} documents the number of studies (k) and number of effect sizes (j) for each level of all extrinsic and methodological characteristics.
 
 ### Sample and Intervention Variables
 Almost all records reported interventions which directed students to construct their own maps of course content - only three (7%) did not.
@@ -362,10 +364,10 @@ For instance, some records bundled CM with other named interventions such as con
 
 <!-- This is an interesting contrast to the results of [@SNAAStudyingConstructingConcept2018a] who reported that 67 of 142 studies implemented CM as a study activity. -->
 
-```{r apatb-descriptive1}
-#| apa-cap: Frequency of Extrinsic and Methodological Factors by Level
+```{r tbl-descriptive1}
+#| tbl-cap: Frequency of Extrinsic and Methodological Factors by Level
 
-read_rds(here::here("tables", "flt_CMBioEd_descriptive1"))
+read_rds(here::here("tables", "flt_paper2_descriptive1"))
 ```
 
 Most records specified that students did or did not have time to practice and become familiar with CM before the intervention lesson or unit.
@@ -388,12 +390,12 @@ More records indicated that CM activities involved minimal student interaction (
 The grade level of study participants was coded as primary (K-8 in the U.S.), secondary (9-12), undergraduate (UG, 13-16), or post baccalaureate (PB, inclusive of professional schools regardless of participant age and those not in school).
 Most records used a sample of secondary (26, 55%) or undergraduate students (11, 25%). 
 Six (14%) records used a sample of primary students and three (7%) worked with post-baccalaureate students.
-{aptb-descriptive2} documents the number of studies (k) and number of effect sizes (j) for each level of all sample and internvention characteristics.
+{tbl-descriptive2} documents the number of studies (k) and number of effect sizes (j) for each level of all sample and intervention characteristics.
 
-```{r apatb-descriptive2}
-#| apa-cap: Frequency of Sample and Intervention Factors by Level
+```{r tbl-descriptive2}
+#| tbl-cap: Frequency of Sample and Intervention Factors by Level
 
-read_rds(here::here("tables", "flt_CMBioEd_descriptive2"))
+read_rds(here::here("tables", "flt_paper2_descriptive2"))
 ```
 
 Six studies were chosen at random for the calculation of intercoder agreement.
@@ -403,7 +405,7 @@ The remaining 38 studies were coded solely by the first author.
 
 ## Data Analysis
 
-All data handling and analytic procedures were conducted in R [@RCLanguageEnvironmentStatistical2023], primarily using the `metafor` package [@VieConductingMetaanalysesMetafor2010].
+All data handling and analytic procedures were conducted in R [@RCLanguageEnvironmentStatistical2023], primarily using the *metafor* package [@VieConductingMetaanalysesMetafor2010].
 
 ### Calculation of effect sizes
 The pretest-posttest control group design (PPC) was used in 34 studies (78%) with 67 (72%) ES included in the meta-analysis. 
@@ -412,7 +414,7 @@ The posttest-only control group design (POC) was used in 10 (22%) studies with 2
 Data for calculation of standardized mean differences (SMD) were collected in accordance with established practice primarily using means, standard deviations, and samples sizes [@BHHRIntroductionMetaanalysis2009].
 Other statistics, such as t-, p-, or F-values, and pretest-posttest correlations were also collected.
 
-Using reported statistics, missing summary statistics (means, standard deviations, and pretest-posttest correlations) were calculated in R [@RCLanguageEnvironmentStatistical2023].
+Using reported statistics, missing summary statistics (means, standard deviations, and pretest-posttest correlations) were calculated.
 One study reported correlations and three others reported statistics that allowed correlations to be calculated.
 The unweighted average correlation from these four studies (with eleven independent correlations) was 0.72.
 Correlations for the remaining 173 of 184 change scores (94%, two per effect size) in this meta-analysis were imputed at the conservative value of 0.6.
@@ -475,7 +477,7 @@ The multilevel model handles dependent effect sizes when they result from indepe
 However, effect sizes were included that represented multiple measures with the same sample or that involved overlapping sample comparisons (e.g., one intervention group and two comparison groups).
 A variance-covariance matrix was used to take these two additional sources of dependency into account.
 The correlation between multiple measures and overlapping comparisons were set at 0.4 and 0.6, respectively.
-Because the variance-covariance matrix only estimates the dependency structure using given values, robust variance estimate was also applied using the `clubSandwich` R package [@PusClubSandwichClusterrobustSandwich2023].
+Because the variance-covariance matrix only estimates the dependency structure using given values, robust variance estimate was also applied using the *clubSandwich* R package [@PusClubSandwichClusterrobustSandwich2023].
 Robust variance estimation adjusts estimated variances, giving more conservative values.
 
 Three meta-regression models were analyzed which included different sets of variables to address each research question.
@@ -483,8 +485,12 @@ For the first question, no moderators were included to obtain mean effect size a
 For the second and third questions, sets of moderators were included in a forced entry fashion.
 Extrinsic and methodological (Ext-Met) characteristics formed one set and sample and intervention (Sam-Int) characteristics formed the other.
 All models were fitted using restricted maximum likelihood estimation.
-Inference tests and consequent confidence intervals were based on t-distributions.
-  
+Inference tests and consequent confidence intervals for mean effects were based on t-distributions.
+
+<!-- The adapted $R^2$ value was applied to assess the proportions of within-, and between-study variance explained by moderators [@KHStatisticallyAnalyzingEffect2019]. -->
+<!-- Confidence intervals for $R^2$ statistics were calculated using a non-parametric bootstrapping approach with 2000 replications (code adapted from [@VieConfidenceIntervalsR22023]). -->
+<!-- Can't do this, the code I have doesn't use the variance-covariance matrix argument in rma.mv -->
+
 ### Diagnostics and Publication Bias
 
 Before statistical modeling, influential cases were detected using a measure analogous to Cook's distance which deletes one study at a time and measures the effect on the summed residuals of all studies [@VCOutlierInfluenceDiagnostics2010].
@@ -506,14 +512,14 @@ Egger's linear regression is only available for effect sizes aggregated by study
 
 # Results
 
-The studies reported by @GBSConceptMappingEffects2000 and @STConceptMappingEnhances2013 (studies 32 and 34, respectively) were identified as influential studies (see {apafg-cooks-distances}).
+The studies reported by @GBSConceptMappingEffects2000 and @STConceptMappingEnhances2013 (studies 32 and 34, respectively) were identified as influential studies (see @fig-cooks-distances).
 @GBSConceptMappingEffects2000 reported an effect size of 6.29 with a variance of 0.80.
 They investigated the effect of CM on reading comprehension with 124 underachieving seventh graders in a major US city.
 The intervention lasted eight days and involved the construction of a rudimentary concept map of the contents of a textbook chapter on the circulatory system.
 On the 20-question posttest, the comparison group ("traditional teacher-directed delivery") mean score was 8.21 and the intervention group was 17.84.
 This result is extraordinary and there is no clear flaw in the study design and implementation.
 
-@STConceptMappingEnhances2013 reported three effect sizes - 1.73, 4.08, and 4.94 - which are all well above the mean effect size.
+@STConceptMappingEnhances2013 reported three effect sizes (1.73, 4.08, and 4.94) which are all well above the mean effect size.
 They investigated the effect of CM on learning in a biochemistry course with 150 first-year, Indian medical students. 
 The intervention lasted an entire academic unit (approximately six months) with students constructing maps in study groups of five.
 Over three 20-point posttests, the comparison group ("traditional lecture-based program") averaged about 7.8 while the intervention group averaged about 13.2.
@@ -523,8 +529,8 @@ Note in the following sections that when these two influential studies are inclu
 
 <!-- As evident in {apafg-cooks-distances} cook's distances were robust to the imputed prepost correlation values. -->
 
-```{r apafg-cooks-distances}
-#| apa-cap: "Cook's Distances"
+```{r fig-cooks-distances}
+#| fig-cap: "Cook's Distances"
 #| apa-note: "The average cook's distance is marked by the dotted line. Cook's distances are shown for each imputed prepost correlation (r) value."
 knitr::include_graphics(here::here("figures", "model_base_cooks.png"))
 ```
@@ -537,15 +543,15 @@ For this and each of the following sections, model results are given with and wi
 The results of additional sensitivity analyses for imputed prepost correlation values are available in the supplemental material.
 
 The mean effect size of included studies is 0.50 [0.26, 0.73] indicating that CM interventions in biology education are largely beneficial for cognitive outcomes.
-In the abstract, if a biology course section averaged 80% on assessments with a standard deviation of 10%, this improvement would result in a 5% average increase in scores.
-The Q test for heterogeneity ($H_0: heterogeneity = 0$), given in {apatb-basemodel-stats} and a visual inspection of the forest plot ({apafg-forest}) indicates that there is substantial heterogeneity.
-The wide confidence intervals for individual studies in {apafg-forest} is related to the relatively large amount of estimated within-study variance (0.27).
+In the abstract, if a biology course section averaged 80% on assessments with a standard deviation of 10%, this improvement would result in a 5% increase in the average.
+The Q test for heterogeneity ($H_0: heterogeneity = 0$), given in @tbl-basemodel-stats and a visual inspection of the forest plot (@fig-forest) indicates that there is substantial heterogeneity.
+The wide confidence intervals for individual studies in @fig-forest is related to the relatively large amount of estimated within-study variance (0.27).
 The within-study variance is nearly equal to the estimated between-study variance (0.29).
 In a multilevel model, $I^2$ values may be computed for each variance component. 
-Here, the combined $I^2$ value is 90%, meaning that 90% of the total variance (sampling, within-, and between-study variances) is not attributed to sampling or measurement variance at the level of outcomes.
+Here, the combined $I^2$ value is 90%, meaning that 90% of the total variance (the sum of sampling, within-, and between-study variances) is not attributed to sampling or measurement variance at the level of outcomes.
 
-```{r apatb-basemodel-stats}
-#| apa-cap: Model Results Without Moderators
+```{r tbl-basemodel-stats}
+#| tbl-cap: Model Results Without Moderators
 #| apa-note: "* p < 0.001"
 #| ft.align: left
 
@@ -554,46 +560,42 @@ Here, the combined $I^2$ value is 90%, meaning that 90% of the total variance (s
 # pre1 <- predict(datm1)
 # pre2 <- predict(datm2)
 
-read_rds(here::here("tables", "flt_CMBioEd_basemodel_stats"))
+read_rds(here::here("tables", "flt_paper2_basemodel_stats"))
 ```
 
-```{r apafg-forest}
-#| apa-cap: Forest Plot, Effect Sizes Aggregated by Study
+```{r fig-forest}
+#| fig-cap: Forest Plot, Effect Sizes Aggregated by Study
 knitr::include_graphics(here::here("figures", "basemodel_forest.png"))
 ```
 
-## RQ2 (controlling for ex-meth factors, heterogeneity; model_exmeth_out)
+## RQ2 and 3: Effects Associated with Variables
 
-The results of the four models analyzed are shown in {apatb-model-stats}.
+The results of the four models analyzed are shown in @tbl-model-stats.
 The columns labeled ${R^2}_3$ and ${R^2}_2$ are statistical analogs of $R^2$ in typical linear regression analyses.
 They give the proportion of variance explained (within- and between-study, respectively) under each model in reference to the "no moderators" model.
-When only extrinsic and methodological variables are included, 20% of within- and 35% of between-study variance is explained.
+When only extrinsic and methodological variables are included, an estimated 20% of within- and 35% of between-study variance is explained.
 When only the sample and intervention variables are included, almost no variance is explained.
-When all variables are included, the amount of explained within-study variance increases (from 20% in the "ext-met" model to 34%) while the amount of explained between-study variance remains the same.
+When all variables are included, the amount of explained within-study variance increases (from 20% in the "ext-met" model to 34%) while the amount of explained between-study variance remains the same. It is significant that the extrinsic and methodological variables explain so much more variance than the sample and intervention variables in their respective models.
 
-Within the set of extrinsic and methodolgoical variables, the only variable that varies within studies is comparison condition.
-Exploratory, univariate analysis (one model for each factor, see supplemental material {apatb-univariate-stats}) confirms that comparison condition alone explains a substantial portion (34%) of within-study variance.
+Within the set of extrinsic and methodological variables, the only variable that varies within studies is comparison condition.
+Exploratory, univariate analysis (one model for each factor, see supplemental material @tbl-univariate-stats) confirms that comparison condition alone explains a substantial portion (34%) of within-study variance.
 Between-study variance appears to be explained by a combination of comparison condition, country, and record type.
 Each of these factors on its own explains some amount of between-study variance but the publication year and study setting do not.
+In the set of sample and intervention variables, two of the five sample and intervention factors - student training and intervention duration - explain some between-study variance.
 
-It is surprising that the extrinsic and methodological variables explain so much more variance than the sample and intervention variables in their respective models.
-From the univariate analysis, two of the five sample and intervention factors - student training and intervention duration - explain some between-study variance.
-
-```{r apatb-model-stats}
-#| apa-cap: Model Heterogeneity Statistics
+```{r tbl-model-stats}
+#| tbl-cap: Model Heterogeneity Statistics
 #| apa-note: "* p < 0.001"
 #| ft.align: left
 
-read_rds(here::here("tables", "flt_CMBioEd_compare_model_stats"))
+read_rds(here::here("tables", "flt_paper2_compare_model_stats"))
 ```
 
-## RQ3 (controlling for ex-meth factors, effect of samp-int factors; model_all_out)
-
-In {apatb-all-stats}, statistics for all moderators in the combined model are given. 
+In @tbl-all-stats, statistics for all moderators in the combined model are given. 
 As all moderators are in the same model, moderator effects should be understood under the constraint that all other moderators are held constant.
 CM type and student training are strongly associated with effect size.
 CM activities that involve students in studying a provided map rather than creating their own are associated with an effect size increase of 0.84 [0.26, 1.43] for cognitive learning.
-Studies that implemented CM training or practice periods of three days/sessions or more are associated with larger increases.
+Studies that implemented CM training or practice periods of three or more days/sessions are associated with larger increases.
 Cognitive learning effect sizes were 0.68 [0.11, 1.25] and 0.53 [-0.09, 1.15] greater when compared to studies with minimal (one to two days/sessions) or no practice, respectively.
 
 Student interaction and grade level are weakly associated with effect size.
@@ -605,50 +607,160 @@ The duration of CM activities is not associated with effect size.
 Coded as a continuous variable where the unit is weeks, it can be said that each increase in duration by one week is associated with an increase in effect size of less than 0.01 (0.003 to be exact).
 The typical intervention is no more than four weeks long.
 
-```{r apatb-all-stats}
-#| apa-cap: Moderator Statistics, Combined Model
+```{r tbl-all-stats}
+#| tbl-cap: Moderator Statistics, Combined Model
 #| apa-note: "* The reference group for categorical variables is given in parentheses. ** p < 0.05 that g is not equal to zero"
 #| ft.align: left
 
-read_rds(here::here("tables", "flt_CMBioEd_combined_mod_stats"))
+read_rds(here::here("tables", "flt_paper2_combined_mod_stats"))
 ```
 
 ## Publication Bias
 
-A funnel plot was created with effect sizes aggregated by study (see supplemental material, {apafg-funnel-agg}).
+A funnel plot was created with effect sizes aggregated by study (see supplemental material, @fig-funnel-agg).
 The plot indicates that the greater the standard error of a study (i.e., the less precise) the greater the effect size.
 Egger's linear regression test confirms this pattern (t = 2.61 (40), p = 0.013) which has been associated with publication bias.
-However, a second plot using the multilevel combined model (see supplemental material, {apafg-funnel-all}) shows no such pattern, indicating that the apparent publication bias can be attributed to an association between standard error and one or more of the included variables.
+However, a second plot using the multilevel combined model (see supplemental material, @fig-funnel-all) shows no such pattern, indicating that the apparent publication bias can be attributed to an association between standard error and one or more of the included variables.
 
 # Discussion
-  1. On average, CM interventions are effective
-  2. The set of Ext-Meth moderators explain much more within- and between-study heterogeneity than the Sam-Int moderators
-  3. CM type and student training are each strongly associated with effect size when other variables are held constant.
-      - As with any meta-analysis the results are observational (not causal) and can only be generalized to the set of all CM intervention research in biology education
-  
-      <!-- - By combining moderators in one model the present results avoid the quandary of inflated family-wise type 1 errors. -->
-      <!-- - Also, results are more robust as the effects of each moderator are partialed out with respect to each other moderator included in the model. -->
-      <!-- - Yet by including many moderators, statistical power is decreased and less precise estimates are produced. -->
-      <!-- - Previous results include only subgroup analysis which is equivalent to a univariate analysis. -->
-    
-    
+
+The findings of this systematic review and meta-analysis indicate that CM research is an active, ongoing research topic in biology education with significant participation across the globe. 
+Of 834 records screened, 107 were judged potentially relevant and were successfully retrieved.
+Of these, 44 met all of the eligibility criteria and an additional 18 met all criteria except that they did not report the necessary statistics for effect size calculations. 
+The earliest study included in the meta-analysis was published in 1979 and yet a plurality of studies (17, 39%) were published between 2010 and April, 2021 (the cutoff search date).
+Thirteen of these seventeen studies (76%) took place outside the US in countries such as Serbia, India, Iran, and Ghana.
+
+The scope of this systematic review and meta-analysis is similar to that of @SNAAStudyingConstructingConcept2018 with two important differences.
+First, only cognitive outcomes were considered in this meta-analysis (e.g., recall, achievement) while motivational or other affective outcomes were not.
+Second, only studies where biology topics were taught were included rather than any school subject, STEM or otherwise.
+Of the 118 studies included in @SNAAStudyingConstructingConcept2018, 21 were in this meta-analysis.
+It appears that the same two studies were identified as influential cases in both meta-analyses.
+While @SNAAStudyingConstructingConcept2018 included these studies with adjusted effect sizes (approximately halved), these studies were removed in the main analysis and their effect on results were judged with sensitivity analyses.
+
+This meta-analysis is similar to other meta-analyses in the behavioral and social sciences regarding the number of studies, effect sizes, and dependency in the data.
+@FJD+ApplicationMetaanalyticMultilevel2020 report that multilevel meta-analyses in this domain have a mean of 65 studies and 3.56 effect sizes per study with approximately 40% reporting only one effect size.
+Thus, for this meta-analysis, somewhat fewer (42) studies report fewer (2.10 per study) effect sizes with exactly one half of the studies reporting one effect size.
+@FJD+ApplicationMetaanalyticMultilevel2020 report that only 7.3% modeled three sources of dependency, the same as in this meta-analysis: 1) multiple independent samples, 2) overlapping sample comparisons, and 3) multiple measures.
+
+When interpreting the results of any meta-analysis, causal claims based on meta-regression estimates are inappropriate [@CHVHandbookResearchSynthesis2019]. 
+Studies are past events which may have evidence for causal claims but associations between study results and study characteristics only provide correlational evidence.
+The value of meta-regression in the current context is in assessing the variance of observed effects and associations with study characteristics.
+
+## RQ1: Mean Effect Size and Heterogeneity
+
+With respect to the first research question the results clearly indicate that, on average, CM interventions are effective with a standardized mean difference of 0.50 (SE = 0.12, 95% CI [0.26, 0.73]) relative to the comparison condition.
+However, this should be interpreted with caution as about 90% of the heterogeneity in effect sizes ($\tau = 0.56$) can be attributed to differences within- and between-studies rather than sampling or measurement error. 
+<!-- Would like to calculate a 95% CI for tau as well -->
+That is, most of the variation in effects is potentially due to meaningful differences between sampled students and CM implementations.
+Furthermore, the 95% prediction interval (expected range of 95% of effect sizes) is -1.04 to 2.03, much wider than the 95% confidence interval, indicating that the average effect size should not be expected in specific instances.
+<!-- Would like to incorporate a probability of benefit (>0 effect) -->
+<!-- the MetaUtility package might do the trick? -->
+The present results are more or less consistent with the findings of @SNAAStudyingConstructingConcept2018 who reported a mean effect size of 0.58 across all included studies and 0.60 in the subgroup of STEM education.
+Their reported I^2 value of 87.5% is also very similar.
+Unfortunately, @SNAAStudyingConstructingConcept2018 do not report $\tau$ values and did not use meta-regression modeling so it is difficult to make any further comparisons.
+
+With no moderators, heterogeneity is evenly split within- and between-studies ($\tau_2 = 0.27, \ I^2_2 = 43.5\%$ and $\tau_3 = 0.29, \ I^2_3 = 46.8\%$, respectively) which suggests that some set of variables which vary both between- and within-studies are responsible.
+If most of the heterogeneity was located within-studies, then only those variables which consistently vary within studies (e.g., comparison condition) could plausibly explain it.
+In contrast, if most of the heterogeneity was located between-studies, then any variable could be involved, since all variables vary between studies.
+These heterogeneity estimates are similar to mean heterogeneity estimates, both within- (0.15) and between-study (0.12), in behavioral and social science meta-analyses [@FJD+ApplicationMetaanalyticMultilevel2020].
+The proportion of variance at each level is also comparable to overall proportions calculated for the whole domain of behavioral and social science ($I^2_2 = 17.0\%$ and $I^2_3 = 60.9\%$).
+The larger proportion of within-study variance indicates that within-study differences are more significant than in other topics.
+The similarity of these comparisons also lends confidence to the results of this meta-analysis.
+
+<!-- It is worth noting that the meta-regression models used in this analysis assumed that the within-study variance parameter does not vary between studies. -->
+<!-- That is, that effect sizes within every study shared a common variance. -->
+<!-- This is a necessary assumption if a within-study random effect is to be estimated as many studies do not report multiple effect sizes. -->
+<!-- It is likely that the within-study random effect is affected by study characteristics such as study quality and so vary from one study to the next. -->
+<!-- The benefit  -->
+
+## RQ2: Extrinsic and Methodological Characteritics
+
+Regarding the second research question, the comparison condition (BAU or reform) alone explains an estimated 35% of within-study heterogeneity.
+<!-- Would like to include boostrapped R^2 95% CI interval and I have the data -->
+<!-- This is somewhat expected as comparison condition is one of the few variables that varies within-studies and was likely to be associated with effect size. -->
+It is the predominant practice for researchers to compare CM with a BAU, "control" condition consisting of large-group lectures, class discussions, and/or reading without aids (42 of 44 eligible studies included such a BAU condition).
+These BAU conditions are not expected to be as effective as the study condition of interest but are included to represent current practices which are conceived in the community of science educators as merely traditional or pragmatic, and not according to best practices.
+The results of the combined model show that, with other variables held constant, reform comparison conditions are associated with a large and statistically significant decrease in effect size ($g = -0.97[-1.94, -0.00]$).
+@SNAAStudyingConstructingConcept2018 did not categorize comparison conditions as BAU or reform but their results did vary significantly from "discussion/lecture" to "constructed text" comparisons (with subgroup means of $g = 1.05$ and $g = 0.39$, respectively) and so agrees with current results.
+
+It is not especially meaningful that an instructional intervention which is regarded by researchers as effective, such as CM, is found to be effective in comparison to a BAU condition.
+There are many instructional, classroom interventions with similar evidence for their efficacy [see @HatVisibleLearningSynthesis2009].
+Presumably, these alternative interventions would produce similarly positive results.
+Indeed, that is what the current results show: on average, non-CM, reform conditions are as, or more effective than CM conditions.
+As only a eight studies report a reform condition and these conditions are dissimilar (see @tbl-descriptive1), a more detailed analysis of these conditions is not possible.
+
+Two extrinsic characteristics, country and record type, each explain 6% and 13% of between-study heterogeneity.
+In the combined model, journal articles are associated with a large difference in mean effect size relative to dissertations/theses ($g = 0.75 [0.02, 1.48]$) while other variables are held constant.
+It is known that some degree of bias exists for positive or statistically significant results in published studies [@VCSPublicationBias2019] and prior meta-analyses have reported positive associations for journal articles relative to dissertations while holding methodological variables constant [@MWude2004].
+The degree to which this is simply publication bias or this is due to confounding study characteristics, such as study quality, cannot be known from this analysis.
+<!-- It is interesting to note that there is also an association between standard error and effect size (evidence for publication bias) as noted in the funnel plot for the base model which is not present in the combined model. -->
+<!-- A another analysis that only includes record type would be informative, however, I don't want to take the time! -->
+
+Country was coded as US and non-US to allow for the association between country and effect size to be estimated.
+Otherwise there would be thirteen separate effects to be estimated, ten of which would only have one effect size, making these estimations meaningless.
+In the combined model, studies outside the US are associated with a small increase in effect size relative to studies in the US ($g = 0.14[-0.71, 1.00]$), while other variables are held constant.
+This agrees with the results of @SNAAStudyingConstructingConcept2018 who found consistently larger mean effect sizes for studies occurring outside of North America, though they found much larger differences.
+It could be that this association results from socio-cultural factors relevant to education and to CM activities.
+Comparing the combined model estimate with the post hoc univariate model ($g = 0.70[0.33, 1.07]$ and $g = -0.42[-0.87, 0.03]$ for nonUS and US respectively, a difference of $g = 1.12$) shows that most of the difference between US and non-US studies ($\sim88\%$) are accounted for by other variables.
+Thus, a majority of the between-country differences in effect size can be attributed to differences in coded study characteristics.
+
+The study setting, defined as "research" (corresponding to an artificial learning situation) or classrooms that are "intact" or "partial" does not explain any heterogeneity on its own.
+In the combined model, research or partial classroom conditions are negatively associated with effect size ($g = -0.48[-1.04, 0.07]$ and $g = -0.47[-3.25, 2.31]$, respectively).
+This conforms to the expectations of many CM proponents who argue that research taking place outside of authentic learning environments are ecologically invalid [@MCC+CommentRetrievalPractice2011].
+Accordingly, negative results from a "research" setting simply do not reflect actual classroom environments where there are many positive indications of CM efficacy.
+This line of argument is persuasive insofar as CM is effective in such authentic environments and the setting is the only consistent difference between studies.
+However, this meta-analysis indicates that other characteristics, such as comparison condition, are much more important than setting in explaining different results.
+
+## RQ3: Sample and Intervention Characteristics
+
+Without controlling for extrinsic and methodological variables, sample and intervention variables do not explain much heterogeneity.
+As a set, they explain only 2% of between-study variance, much less than the set of extrinsic and methodological variables that explain 20% and 35% of between- and within-study variance.
+In the post hoc univariate analysis, the degree of student training with CM and the duration of CM interventions were the only sample and intervention variables that explained any heterogeneity (14% and 9% of between-study variance, respectively).
+
+Sample and intervention variables appear to provide information which is complementary to that of the extrinsic and methodological variables.
+In the combined model, the proportion of explained between-study variance increases to 34%, a difference of 14% from extrinsic and methodological variables alone.
+What is behind this interaction between the variables sets is unclear.
+Goodman and Kruskal's $\tau$ ($GK_\tau$) is an asymmetric association, which is interpreted as the proportion of variance explained in one categorical variable by another [@SomSimilarityGoodmanKruskal1962].
+A post hoc exploratory analysis of the categorical variables in this analysis indicates that student level (primary, secondary, etc.) explains nearly half of the variability in country ($GK_\tau = 0.41$) and setting ($GK_\tau = 0.47$).
+The reverse relationship is considerably weaker - country and setting explain relatively little variability in student level ($GK_\tau = 0.16$ and $GK_\tau = 0.36$, respectively).
+All other Goodman and Kruskal $\tau$ values for relationships between the two sets are between 0.00 and 0.15.
+
+Most of the estimates for sample and intervention variables are not statistically significant ($p < 0.05$) in the combined model.
+The one exception is CM type (constructed or studied) in which conditions where students studied CM are associated with a large increase in effect size ($g = 0.84[0.26, 1.43]$).
+This is a very surprising result as the strength of CM as an instructional activity is thought to be in engaging students in the construction of their knowledge [@NCTheoreticalOriginsConcept2007], not in reviewing a map constructed by experts.
+This should be interpreted with abundant caution as only four studies reported a CM study condition and the inclusion of one or two studies could meaningfully change this result.
+[@SNAAStudyingConstructingConcept2018] included 67 and 75 studies reporting CM study and construction conditions, respectively, and found that CM construction conditions have a larger mean effect size ($g = 0.72$ compared to $g = 0.43$).
+
+Other sample and intervention variables have similarly surprising associations with effect size.
+Minimal student interaction during the CM condition (e.g., individual CM construction) is associated with an increase in effect size ($g = 0.25[-0.17, 0.67]$) over collaborative interaction (e.g., CM construction as a group activity).
+Studies with undergraduate students are negatively associated with effect size compared to post-baccalaureate students ($g = -0.57[-1.56, 0.43]$) as well as secondary and primary students.
+Studies that included minimal student training in how to use CM are negatively associated with effect size compared to extensive student training ($g = -0.68[-1.25, -0.11]$).
+This is expected by CM proponents [@MCC+CommentRetrievalPractice2011]; however, studies providing no student training at all have nearly the same association ($g = -0.53[-1.15, 0.09]$).
+While these results should be interpreted with caution, they do indicate that the empirical evidence for some common recommendations (e.g., students should be trained, student collaboration should be encouraged) is not conclusive.
+  <!-- - By combining moderators in one model the present results avoid the quandary of inflated family-wise type 1 errors. -->
+  <!-- - Also, results are more robust as the effects of each moderator are partialed out with respect to each other moderator included in the model. -->
+  <!-- - Yet by including many moderators, statistical power is decreased and less precise estimates are produced. -->
+  <!-- - Previous results include only subgroup analysis which is equivalent to a univariate analysis. -->
   <!-- - As with any meta-analysis the results are observational (not causal) and can only be generalized to the set of all CM intervention research in biology education -->
   <!--   - Additionally, the statistically small number of clusters and limited cluster sizes yields low statistical power for estimating parameters -->
   <!--   - Results could easily change with additional studies -->
 
-## Implications for theory and practice
-  1. Teachers should consider the effort required by students to become familiar with CM
-      - CM may be regarded as a metacognitive tool which is affected by practice
-      - Proponents of CM are not clear on whether or not student training has been regarded as important to CM efficacy
-  2. Teachers should consider the role of social interaction in CM activities and whether or not they are beneficial
-      - This is perhaps the most surprising result of this study
-      - Many CM researchers do certainly consider social interaction to be a positive factor in learning
-  - With each point above it ought to be remembered that meta-analytic results care only observational, not casual.
-      - Furthermore, the effect of each factor is not precisely estimated and interactions have not been investigated
-      - It may also be the case that confounding variables are present
-  3. Researchers should consider the comparison condition used to contrast the effects of CM interventions
-      - comparison conditions should be well-described and regarded as an important component of study design
-  
+<!-- ## Implications for theory and practice -->
+<!-- Proponents of CM are not clear on whether or not students require training in order to benefit from CM construction. -->
+<!-- Prior meta-analyses have not investigated the association of  -->
+<!-- The results are mixed with  -->
+<!-- While the results for the effect of training with CM are mixed, it  -->
+<!--   1. Teachers should consider the effort required by students to become familiar with CM -->
+<!--       - CM may be regarded as a metacognitive tool which is affected by practice -->
+<!--       - Proponents of CM are not clear on whether or not student training has been regarded as important to CM efficacy -->
+<!--   2. Teachers should consider the role of social interaction in CM activities and whether or not they are beneficial -->
+<!--       - This is perhaps the most surprising result of this study -->
+<!--       - Many CM researchers do certainly consider social interaction to be a positive factor in learning -->
+<!--   - With each point above it ought to be remembered that meta-analytic results care only observational, not casual. -->
+<!--       - Furthermore, the effect of each factor is not precisely estimated and interactions have not been investigated -->
+<!--       - It may also be the case that confounding variables are present -->
+<!--   3. Researchers should consider the comparison condition used to contrast the effects of CM interventions -->
+<!--       - comparison conditions should be well-described and regarded as an important component of study design -->
 <!-- i) year: when other variables are held constant, year is not strongly associated with CM effects -->
 <!--         ii) record type: -->
 <!--         iii) comparison condition: results indicate that the comparison condition (categorized as BAU/Reform) is strongly associated with CM effects as measured in the literature when other variables are held constant. -->
@@ -660,47 +772,125 @@ However, a second plot using the multilevel combined model (see supplemental mat
 <!--         viii) intervention duration: results indicate that the duration of CM interventions is not associated with CM effects when other variables are held constant. -->
 <!--         ix) student interaction: counter to constructivist predictions, minimal student interaction (not explicitly engaging in CM activities in groups) was weakly associated  -->
 <!--         x) student grade level -->
-
 <!--     Some of these variables were previously investigated by @SNAAStudyingConstructingConcept2018a. -->
 <!-- Several new variables were analyzed here (record type, year, setting, and student training) which contributes to our understanding of the CM intervention literature. -->
 <!-- In particular, the extent of student training in the use of CM (if any at all) and the integration of CM within the classroom setting has been said to be important for the effectiveness of CM [@KBResponseCommentRetrieval2011]. -->
 <!-- The present results affirm both factors as being positively associated with cognitive outcomes in CM interventions. -->
+## Implications for primary research
 
-## Implications for research
-### External and construct validity in a meta-analysis
-  1. Coding studies is a difficult and resource-intensive process with tradeoffs
-      - Increasing the number of coded characteristics and of levels within each characteristic increases the ability of statistical analyses to be mapped to real-world practices (i.e., external and construct validity)
-      - And yet increasing the number of characteristics and levels also decreases the reliability of data collection and of the statistical power of meta-regression analyses.
-      - In this study, only five sample and intervention characteristics were coded and then collapsed into larger categories
-  2. Setting eligibility criteria for a meta-analysis also involves tradeoffs
-      - In this study, only biology education was investigated
-  3. Both of the above decisions affect the relevance (external and construct validity) of any meta-analysis to theory and practice and the quality (accuracy and precision) of the results.
-      - Furthermore, meta-analyses are inherently limited by the available primary research
-      - If primary researchers do not investigate particular populations or report significant characteristics, then no synthesis will either
+Several implications for researchers studying CM interventions are supported by this meta-analysis.
+First, researchers should include comparison conditions other than BAU conditions (e.g., lecture and class discussion).
+BAU conditions are not expected to be effective, as defined in this study, while CM conditions generally are.
+This differences in expectations on the part of researchers may lead to the observer-expectancy effect [@KDL+LowHopesHigh2012] especially when the researcher is the instructor implementing one or both conditions.
+Even in the absence of such bias, the CM-BAU comparison is not useful to teachers and policy makers who must choose from many competing instructional activities and approaches.
+It is not enough to determine that an intervention is better than no intervention or substandard conventional practices; studies should provide some evidence that CM is an effective intervention among other interventions. 
+To that end, when the purpose of a study is to evaluate an implementation of CM, the comparison should be with other evidence-based instructional practices.
+Ideally, an assessment of the benefits (e.g., fewer resources required) and limitations (e.g., more teacher training required) of competing interventions would be incorporated.
 
-### Practices and direction of primary research studies
-  1. Science education researchers should report a variety of details and strive for common reporting frameworks
-      - a lack of detail is reported for the sample and intervention which prevents fruitful synthetic discoveries as research accumulates
-      - previous limitations such as word count limits are no longer present and should not dictate reporting practices
-      - providing supplemental materials, data sharing, and other open science practices will aid future research and enable progress
-  2. studies are "theory-based", looking backward, but not "theory-driven", looking forward
-      - manuscripts often cite prior research and theory in support of the relevance of their study
-      - however, few manuscripts cite research and theory in support of their study design
-      - research has followed an evaluation-based program rather than a theory or product development program
-  3. In order to further theory and practice, science education researchers should consider how their planned instructional intervention study might be synthesized with similar studies
-    
-### Explaining variance within- and between-studies
-  1. Within- and between-study variance can and should be regarded as opportunity at furthering our understanding and uncovering new directions in research
-      - It could also be regarded as a metric, gauging the usefulness of theory to predict outcomes
-      - Attaining some degree of predictive ability is a necessary precondition for creating evidence-based policy and recommendations for practice
-      - The greater the unexplained variance, the greater the opportunity for improving our predictive ability
-  2. Explaining variance requires a rigorous systematic approach to research synthesis
-      - In particular, reliable study coding and sophisticated statistical modeling are critical 
-      - Also required are a sufficient number of studies which use common reporting standards or frameworks
-  3. This study focused on explaining variance and attempted to apply best practices in research synthesis to do so
-      - Future meta-analyses on CM or any other educational intervention should consider how best to code studies and how to report the reliability of this process
-      - Future meta-analyses should also investigate the usefulness of different extrinsic and indicator variables (study quality in particular) which may have general applicability
-      - The community of meta-analysts should support and promote open science practices, sharing data, code, and more detailed practices
+Second, it appears that research is not organized by a systematic research program or paradigm.
+Rather, most researchers appear to have worked independently or in isolated collaborations to produce evaluations of particular implementations of CM in actual classrooms.
+Only two studies (5%) involved a controlled "research" setting with randomization of participants to learning conditions [@OKComparingCombiningRetrieval2021b; @WDEffectVariedConcept2004a].
+The rest used a quasi-experimental study design in which course sections, instructors, or schools were assigned each condition.
+These study designs come with trade-offs often noted in the research literature.
+Often quasi-experimental designs are implemented in order to study actual classrooms which prevent the randomization of students to conditions.
+The drawback is that the evidence for a causal inference is significantly diminished from the threat of confounding variables.
+Working with actual classrooms also makes it more difficult to precisely control one or more features of the conditions.
+As a result, it is difficult or impossible to build progressively upon the results of previous studies, improving our understanding of the intervention and factors relevant to its efficacy.
+
+In discussing the state of evidence in science education policy space, @ZKCSThereEvidenceCrisis2022 describe a useful distinction between program-based studies and controlled studies.
+Program-based studies typically measure the efficacy of a bundled intervention, sometimes with a BAU comparison, using a pre-post research design.
+Controlled studies design intervention and comparison conditions to examine one factor at a time and randomly assign participants to each.
+As such, program-based studies provide limited causal evidence for interventions within a particular context while controlled studies provide much more robust causal evidence for particular instructional factors.
+@ZKCSThereEvidenceCrisis2022 argue persuasively that both program-based and controlled studies should inform science education policy to improve student outcomes.
+
+@SNAAStudyingConstructingConcept2018 use slightly different language to make a similar point applied to CM research in particular and to theory rather than policy.
+They write that, "Much of the research included in this meta-analysis is evaluation-oriented research designed to investigate if using concept maps is effective under some set of conditions, and very little is theory-oriented research designed to investigate why using concept maps may be effective." [448]
+The present findings demonstrate that a variety of samples and conditions have been investigated.
+For the first time, the present findings have also quantified and investigated sources of heterogeneity using appropriate methods and have demonstrated that very little of this heterogeneity could be explained.
+We conclude that the lack of controlled studies (or theory-oriented research) has resulted in a lack of evidence supporting the development of a theory for CM effects.
+Consequently, recommendations for CM in educational policy and practice are vague and sometimes inconsistent.
+
+One case in point is whether or not CM construction needs to be learned and developed as a skill and if so, how this skill can be assessed.
+The consensus of the literature seems to be that CM is a developed skill, yet some researchers are not consistent in their positions as pointed out by @KBResponseCommentRetrieval2011.
+In coding studies for this meta-analysis it was clear that CM training methods varied considerably in the content and length of the training period.
+The typical study that included a training period started with a explanation of what a CM is, included one or more practice maps, and took place over one to three sessions.
+Thirteen studies reported no CM training while a few studies such as @AjaWhichStrategyBest2013 spent several instructional days training students (in this case, eight classroom hours).
+As mentioned above, current meta-regression results are inconclusive as to the association of CM training with effects.
+
+<!-- And if CM should be regarded as a skill, can it be measured? -->
+<!-- An example of a program-based study is @AjaWhichStrategyBest2013 who examined the efficacy of three evidence-based interventions and a BAU lecture condition. -
+<!-- Each condition was implemented in intact Nigerian classrooms with their regular teachers over twelve weeks. -->
+<!-- @AjaWhichStrategyBest2013 maintained a significant degree of ecological validity in their design and even... -->
+<!-- An example of a controlled study is @OKComparingCombiningRetrieval2021b... -->
+
+Aside from study design, one last recommendation is offered for CM researchers.
+It was observed during the coding of studies and the abstraction of effect sizes that primary research is often reported poorly.
+This is especially true for sample and intervention variables such as participant demographics and academic characteristics (e.g., gender, major, place in program track).
+A lack of detail limits our understanding of the coverage of CM research across populations and variations of CM interventions.
+Poor reporting also limits the ability of future meta-analyses to leverage existing studies to answer new questions.
+The adoption of common reporting frameworks in future research would improve this situation [e.g., for quantitative research @ACK+JournalArticleReporting2018].
+Of course, this largely depends on an agreement in the community of CM researchers on what factors of CM interventions are important, hence a theory of CM effects.
+
+<!-- ### Practices and direction of primary research studies -->
+<!--   1. Science education researchers should report a variety of details and strive for common reporting frameworks -->
+<!--       - a lack of detail is reported for the sample and intervention which prevents fruitful synthetic discoveries as research accumulates -->
+<!--       - previous limitations such as word count limits are no longer present and should not dictate reporting practices -->
+<!--       - providing supplemental materials, data sharing, and other open science practices will aid future research and enable progress -->
+<!--   2. studies are "theory-based", looking backward, but not "theory-driven", looking forward -->
+<!--       - manuscripts often cite prior research and theory in support of the relevance of their study -->
+<!--       - however, few manuscripts cite research and theory in support of their study design -->
+<!--       - research has followed an evaluation-based program rather than a theory or product development program -->
+<!--   3. In order to further theory and practice, science education researchers should consider how their planned instructional intervention study might be synthesized with similar studies -->
+
+## Implications for future systematic reviews and meta-analyses
+This meta-analysis made several tradeoffs in setting eligibility criteria and in the development of the coding protocol.
+Limiting included studies to biology education was necessary to limit the size and scope of the project.
+Future meta-analysis projects ought to investigate other school subjects (e.g., chemistry and/or physics) to determine the degree to which results generalize across STEM subjects.
+Based on the similarity of the results with @SNAAStudyingConstructingConcept2018, it is likely that the mean effect size for other STEM school subjects is approximately the same.
+Of greater interest is the degree to which associations between study characteristics and effect size generalize.
+
+After applying an initial coding protocol to a subset of studies, the protocol was adjusted to collect study characteristics that were reported more often than not and were included by @SNAAStudyingConstructingConcept2018 ("setting" being the exception).
+This decision preserved a focus on study characteristics that might explain heterogeneity and reduced the effort required in data collection.
+It also means that the collected study characteristics reflect reporting practices as much as they reflect a comprehensive set of theoretically significant factors.
+Additionally, a limited number of levels were included for categorical variables as each level beyond the first two require another dummy variable to coded which decreases the statistical power of the corresponding meta-regression models.
+Future meta-analysis projects should consider increasing the project scope to include more studies thus increasing the available statistical power.
+Additionally, a more comprehensive set of study characteristics might be collected to enable an analysis of missing (unreported) data.
+
+<!-- The correlation between variables validates the use of meta-regression to partial out the effects of multiple study characteristics simultaneously. -->
+
+<!-- ### External and construct validity in a meta-analysis -->
+<!--   1. Coding studies is a difficult and resource-intensive process with tradeoffs -->
+<!--       - Increasing the number of coded characteristics and of levels within each characteristic increases the ability of statistical analyses to be mapped to real-world practices (i.e., external and construct validity) -->
+<!--       - And yet increasing the number of characteristics and levels also decreases the reliability of data collection and of the statistical power of meta-regression analyses. -->
+<!--       - In this study, only five sample and intervention characteristics were coded and then collapsed into larger categories -->
+<!--   2. Setting eligibility criteria for a meta-analysis also involves tradeoffs -->
+<!--       - In this study, only biology education was investigated -->
+<!--   3. Both of the above decisions affect the relevance (external and construct validity) of any meta-analysis to theory and practice and the quality (accuracy and precision) of the results. -->
+<!--       - Furthermore, meta-analyses are inherently limited by the available primary research -->
+<!--       - If primary researchers do not investigate particular populations or report significant characteristics, then no synthesis will either -->
+
+The multilevel meta-regression models applied in this meta-analysis allowed for new questions to be asked of body of work which has been active for over forty years. 
+Results allowed several recommendations to be made improve future CM primary research, and yet most of the heterogeneity in the effects of CM interventions remains to be explained.
+Considerable room for improvement remains, both in extending present methods and in improving them with newer analytically approaches such as machine learning.
+It is certainly likely that some portion of the heterogeneity cannot be explained using only the available reports of primary research.
+Some heterogeneity certainly requires, unreported sample and intervention characteristics forever lost to the meta-analyst in older research.
+Future research syntheses might explore this unknown boundary and estimate what proportion of heterogeneity is explainable and hence useful and what portion is not.
+
+<!-- and hence useful and what portion represents mere statistical noise. -->
+<!-- ^^^^^changed this last phrase to be less dramatic^^^^^ -->
+
+<!-- ### Explaining variance within- and between-studies -->
+<!--   1. Within- and between-study variance can and should be regarded as opportunity at furthering our understanding and uncovering new directions in research -->
+<!--       - It could also be regarded as a metric, gauging the usefulness of theory to predict outcomes -->
+<!--       - Attaining some degree of predictive ability is a necessary precondition for creating evidence-based policy and recommendations for practice -->
+<!--       - The greater the unexplained variance, the greater the opportunity for improving our predictive ability -->
+<!--   2. Explaining variance requires a rigorous systematic approach to research synthesis -->
+<!--       - In particular, reliable study coding and sophisticated statistical modeling are critical  -->
+<!--       - Also required are a sufficient number of studies which use common reporting standards or frameworks -->
+<!--   3. This study focused on explaining variance and attempted to apply best practices in research synthesis to do so -->
+<!--       - Future meta-analyses on CM or any other educational intervention should consider how best to code studies and how to report the reliability of this process -->
+<!--       - Future meta-analyses should also investigate the usefulness of different extrinsic and indicator variables (study quality in particular) which may have general applicability -->
+<!--       - The community of meta-analysts should support and promote open science practices, sharing data, code, and more detailed practices -->
 
 
 
@@ -716,7 +906,7 @@ However, a second plot using the multilevel combined model (see supplemental mat
 
 ::: landscape
 # Supplemental Material
-```{r apafg-prisma}
+```{r fig-prisma}
 #| apa-cap: PRISMA Diagram.
 #| out-width: 125%
 
@@ -727,28 +917,25 @@ knitr::include_graphics(here::here("figures", "PRISMA_diagram.png"))
 <!-- It would be much more effective to show both funnels (no moderator model and all moderators model) in one plot. -->
 <!-- Also, I don't think that aggregating by study is useful since, publication bias functions both at the study- and the effect-size level (one may argue it is principally at the effect-size level) -->
 
-```{r apafg-funnel-agg}
+```{r fig-funnel-agg}
 #| apa-cap: Funnel Plot, Aggregated by Study, Without Influential Studies 
 #| out-width: 135%
 
 knitr::include_graphics(here::here("figures", "funnel_plot_agg.png"))
 ```
 
-```{r apafg-funnel-all}
+```{r fig-funnel-all}
 #| apa-cap: Funnel Plot, Combined Model, Without Influential Studies 
 #| out-width: 135%
 
 knitr::include_graphics(here::here("figures", "funnel_plot_all.png"))
 ```
 
-<!-- The univariate stats table is broken, it doesn't show up when called and it appears that there isn't any code to regenerate the table object! -->
-
-<!-- ::: landscape -->
-<!-- ```{r apatb-univariate-stats} -->
-<!-- #| apa-cap: something -->
-<!-- #| ft.align: left -->
-<!-- #| eval: false -->
-<!-- flt_CMBioEd_univariate_mod_stats -->
-<!-- read_rds(here::here("tables", "flt_CMBioEd_univariate_mod_stats")) -->
-<!-- ``` -->
-<!-- ::: -->
+::: landscape
+```{r tbl-univariate-stats}
+#| apa-cap: something
+#| ft.align: left
+#| eval: true
+read_rds(here::here("tables", "flt_paper2_univariate_mod_stats"))
+```
+:::

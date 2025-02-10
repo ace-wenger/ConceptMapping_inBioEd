@@ -1,81 +1,168 @@
-# Working title: *Concept Mapping in Biology Education - A Systematic Review and Meta-Analysis.*
+# Working title: *Concept Mapping in Biology Education - A Systematic
+Review and Meta-Analysis.*
 
-This work was completed as part of my dissertation for a Ph.D. in Science Education at Western Michigan University. 
-My committee chair is Dr. William Cobern with Dr. Betty Adams and Dr. Ya Zhang serving as committee members.
+
+- [Project Overview](#project-overview)
+- [Repository Contents and
+  Structure](#repository-contents-and-structure)
+- [Pipeline Structure](#pipeline-structure)
+
+# Project Overview
+
+This meta-analysis was first completed under the supervision of
+Dr. William Cobern at Western Michigan University. It was later
+incorporated as one paper in a three-paper dissertation for the
+Mallinson Institute for Science Education Ph.D. program (at Western
+Michigan University). My committee chair was Dr. William Cobern with
+Dr. Betty Adams and Dr. Ya Zhang serving as committee members.
 
 ## Purpose
-Concept mapping (CM) instructional interventions have substantial positive effects, according to several meta-analyses. 
-These meta-analyses found significant heterogeneity in effect sizes (ES), but did not apply best methods for investigating it. 
-The current study assessed and investigated the heterogeneity of 92 ES from 44 experimental or quasi-experimental studies of CM in biology education using multilevel, meta-regression. 
+
+Concept mapping (CM) instructional interventions have substantial
+positive effects, according to several meta-analyses. These
+meta-analyses found significant heterogeneity in effect sizes (ES), but
+did not apply best methods for investigating it. The current
+meta-analysis assessed and investigated the heterogeneity of 92 ES from
+44 experimental or quasi-experimental studies of CM in biology education
+using multilevel, meta-regression.
 
 ## Research Questions
-1. What is the mean effect size for cognitive outcomes with CM interventions in biology education and to what extent does it vary within and between studies?
-2. After controlling for study-level, extrinsic and methodological characteristics, to what extent do effect sizes vary within and between studies?
-3. What is the relationship between effect size and characteristics of the intervention and sample for CM interventions in biology education controlling for study-level, extrinsic and methodological characteristics?
 
-## Ancillary Goals
-The reproducibility of results (i.e., same data + same analysis = same results) is an important principle of scientific practice but is difficult to achieve.
-This project aims to be computationally reproducible in that the data analysis is explicit and entirely scripted with no undocumented external dependecies or user inputs. 
-This project also aims to be extensible in that analysis scripts are written as a series of functions that reliably perform one operation with no side effects (changes to the computational environment which may impact futher operations).
+1.  What is the mean effect size for cognitive outcomes with CM
+    interventions in biology education and to what extent does it vary
+    within and between studies?
+2.  After controlling for study-level, extrinsic and methodological
+    characteristics, to what extent do effect sizes vary within and
+    between studies?
+3.  What is the relationship between effect size and characteristics of
+    the intervention and sample for CM interventions in biology
+    education controlling for study-level, extrinsic and methodological
+    characteristics?
 
-In order to achieve these goals, the `renv` and `targets` packages are implemented.
-`renv` records the R environment and validates future environments.
-`targets` defines a data analysis pipeline and monitors the pipeline for changes.
+## Reproducibility
 
-# Overview of Repository Structure
+The reproducibility of results (i.e., same data + same analysis = same
+results) is an important principle of scientific practice but is
+difficult to achieve. As an ancillary goal, this study aims to be
+computationally reproducible in that the data analysis is explicit and
+entirely scripted with no undocumented external dependencies or user
+inputs. This study also aims to be extensible in that analysis scripts
+are written as a series of functions that reliably perform one operation
+with no side effects (changes to the computational environment which may
+impact further operations). In order to achieve these goals, the `renv`
+and `targets` packages are implemented. `renv` records the R environment
+and validates future environments. `targets` defines a data analysis
+pipeline and monitors the pipeline for changes.
 
-- data
-- R
-- tables
-- figures
-- writing
+If you would like to reproduce the findings and are having any
+difficulty in doing so, please email me at the address given on my
+profile page.
 
-- _targets.R
-- renv.lock
+# Repository Contents and Structure
 
+Here, the key components of this repository are listed.
 
-# Pipeline
-### Data processing
-- data_raw
-- data_raw_change
-- data_processed
+| Directory/File | Description |
+|----|----|
+| data/… | Contains raw data used in analysis and summary data for literature search reporting |
+| R/… | Contains all code for R functions called in the `targets` pipeline |
+| tables/paper1_docx_tables.qmd | The script for generating publication quality tables which are in the manuscript |
+| figures/ | Contains all images generated in the `targets` pipeline which are used in the manuscript |
+| writing/ | Contains all files necessary to render the manuscript (in addition to the tables and images) |
+| renv/ | Contains files necessary for R package versioning using `renv` |
+| \_targets.R | Defines the `targets` pipeline |
+| renv.lock | R package versioning snapshot generated by `renv` which may be used to install and load all required R packages |
 
-### Evaluating influential cases
-- data_vcv_matrix
-- model_base
-- table_model_base
-- model_base_cooks
-figure_cooks_base
-- data_processed_out
-- data_vcv_matrix_out
+# Pipeline Structure
+
+Here, each major section of the data analysis pipeline is explained and
+every target is listed. After data_raw, each target is run over a list
+input. The list input corresponds to assumed pre-/posttest correlation
+values defined in `escalc.r`.
+
+## Data processing
+
+1.  data_raw: a minimally processed dataframe; data is loaded from the
+    `.csv` file, irrelevant variables are discarded, and simple
+    calculations fill out missing summary statistics (requiring no
+    assumptions).
+2.  data_raw_change: a list of dataframes; assumed pre-/posttest
+    correlations are used to calculate change score standard deviations
+    in pre-/posttest designs missing these statistics
+3.  data_processed: a list of dataframes ready for meta-regression
+    analyses; calculates all effect sizes for included studies
+4.  data_vcv_matrix: a list of dataframes which correspond to
+    data_processed; calculates variance-covariance matrix for
+    statistically dependent effect sizes
+
+## Exploratory Analysis
+
+5.  three-level, meta-regression modeling with no covariates
+
+- model_base: a list of `rma.mv` model objects; run statistical model
+- table_model_base: a list of dataframes corresponding to model_base;
+  compile model statistics in a simple table
+- model_base_cooks: a list of dataframes corresponding to model_base;
+  calculate Cook’s distances
+- figure_cooks_base: does not produce an R object; output graph to
+  `figures/`
+
+6.  remove influential studies
+
+- data_processed_out: a list of dataframes corresponding to
+  data_processed
+- data_vcv_matrix_out: a list of dataframes corresponding to
+  data_processed_out
+
+7.  repeat basemodel targets but without influential studies
+
 - model_base_out
 - table_model_base_out
 - model_base_cooks_out
-figure_cooks_base_out
+- figure_cooks_base_out
 
-### Exploratory univariate meta-regression models
-- model_univariate
-- table_model_univariate
+8.  univariate (i.e., one covariate) three-level, meta-regression
+    modeling with and without influential studies
+
+- model_univariate: a list of lists of `rma.mv` model objects; run
+  statistical model for each covariate, repeated for each data_processed
+  dataframe
+- table_model_univariate: a list of lists of dataframes corresponding to
+  model_univariate; compile model statistics in a simple table
 - model_univariate_out
 - table_model_univariate_out
 
-### Multiple meta-regression models
+## Main Analysis: MUTOS, multiple meta-regression models
+
+9.  Statistical model with only extrinsic and methodological covariates
+
 - model_exmeth
 - table_model_exmeth
 - model_exmeth_out
 - table_model_exmeth_out
+
+10. Statistical model with only sample and intervention covariates
 
 - model_sampint
 - table_model_sampint
 - model_sampint_out
 - table_model_sampint_out
 
-- model_allsampint
-- table_model_allsampint
-- model_allsampint_out
-- table_model_allsampint_out
+11. Statistical model with all covariates
 
 - model_all
 - table_model_all
 - model_all_out
 - table_model_all_out
+
+## Additional Exploratory Analysis
+
+12. Statistical model with all extrinsic and methodological covariates,
+    and with one sample or intervention covariate
+
+- model_allsampint: a list of lists of `rma.mv` model objects; run
+  statistical model for each sample or intervention covariate, repeated
+  for each data_processed dataframe
+- table_model_allsampint
+- model_allsampint_out
+- table_model_allsampint_out
